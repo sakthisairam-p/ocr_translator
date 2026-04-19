@@ -1,0 +1,6 @@
+Flask
+flask-cors
+deep-translator
+openai-whisper
+langdetect
+gTTS
