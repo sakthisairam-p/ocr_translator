@@ -211,18 +211,11 @@
                         <i class="fa-solid fa-language text-purple-400 text-sm"></i>
                         <select id="sourceLang" class="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer border-none py-1 appearance-none pr-4 w-full text-sm">
                             <option value="auto" id="autoDetectOption" selected>✨ Auto-Detect</option>
-                            <!-- Languages will be injected via block, using Jinja or default static -->
-                            {% if languages %}
-                                {% for lang in languages %}
-                                <option value="{{ lang.code }}">{{ lang.name }}</option>
-                                {% endfor %}
-                            {% else %}
-                                <option value="ta">Tamil (தமிழ்)</option>
-                                <option value="en">English (ஆங்கிலம்)</option>
-                                <option value="hi">Hindi (हिन्दी)</option>
-                                <option value="fr">French (Français)</option>
-                                <option value="es">Spanish (Español)</option>
-                            {% endif %}
+                            <option value="ta">Tamil (தமிழ்)</option>
+                            <option value="en">English (ஆங்கிலம்)</option>
+                            <option value="hi">Hindi (हिन्दी)</option>
+                            <option value="fr">French (Français)</option>
+                            <option value="es">Spanish (Español)</option>
                         </select>
                     </div>
 
@@ -335,16 +328,10 @@
                     <div class="flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-xl border border-indigo-500/30 flex-1 sm:flex-none shadow-[inset_0_0_10px_rgba(79,70,229,0.1)] hover:border-indigo-400/50 transition-colors">
                         <i class="fa-solid fa-earth-americas text-indigo-400 text-sm"></i>
                         <select id="targetLang" class="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer border-none py-1 appearance-none pr-4 w-full text-sm">
-                            {% if languages %}
-                                {% for lang in languages %}
-                                <option value="{{ lang.code }}" {% if lang.code=='en' %}selected{% endif %}>{{ lang.name }}</option>
-                                {% endfor %}
-                            {% else %}
-                                <option value="en">English (ஆங்கிலம்)</option>
-                                <option value="ta">Tamil (தமிழ்)</option>
-                                <option value="hi">Hindi (हिन्दी)</option>
-                                <option value="fr">French (Français)</option>
-                            {% endif %}
+                            <option value="en">English (ஆங்கிலம்)</option>
+                            <option value="ta" selected>Tamil (தமிழ்)</option>
+                            <option value="hi">Hindi (हिन्दी)</option>
+                            <option value="fr">French (Français)</option>
                         </select>
                     </div>
 
@@ -444,6 +431,33 @@
         const charCount = document.getElementById('charCount');
         const MAX_CHARS = 5000;
         let detectTimer;
+
+        // Fetch Languages from API
+        async function loadLanguages() {
+            try {
+                const res = await fetch('/api/languages');
+                const langs = await res.json();
+                
+                // Keep the auto-detect option in sourceLang
+                const autoDetectOpt = document.getElementById('autoDetectOption').outerHTML;
+                
+                let sourceOptions = autoDetectOpt;
+                let targetOptions = '';
+                
+                langs.forEach(lang => {
+                    sourceOptions += `<option value="${lang.code}">${lang.name}</option>`;
+                    targetOptions += `<option value="${lang.code}" ${lang.code === 'ta' ? 'selected' : ''}>${lang.name}</option>`;
+                });
+                
+                sourceLang.innerHTML = sourceOptions;
+                targetLang.innerHTML = targetOptions;
+            } catch (err) {
+                console.error("Failed to load languages:", err);
+            }
+        }
+        
+        // Initialize languages on load
+        document.addEventListener('DOMContentLoaded', loadLanguages);
 
         // Custom Toast Function
         function showToast(message, duration = 4000) {
@@ -563,8 +577,11 @@
                 const data = await res.json();
                 const autoOpt = document.getElementById('autoDetectOption');
                 if (data.name && data.code) {
-                    autoOpt.textContent = "✨ Auto: " + data.name;
-                    sourceLang.value = 'auto'; 
+                    autoOpt.textContent = "✨ Detected: " + data.name;
+                    // ONLY overwrite if user hasn't manually picked a language
+                    if (sourceLang.value === 'auto') {
+                        // Keep it on 'auto' but the label shows the detected lang
+                    }
                 }
             } catch (err) {}
         }
@@ -908,12 +925,15 @@
                 };
 
                 if (selectedLang === 'auto') {
-                    ocrLang = 'eng+tam+hin'; 
+                    // Broader auto-detect list including popular regional languages
+                    ocrLang = 'eng+tam+hin+mal+tel+kan+ben+mar'; 
                 } else if (selectedLang === 'en') {
                     ocrLang = 'eng';
                 } else {
                     const primary = tessMap[selectedLang] || selectedLang;
-                    ocrLang = primary + '+eng'; // Use primary + eng for best results
+                    // Standardize Tesseract codes (some are 2-letter in our list but 3-letter in Tesseract)
+                    const finalOcrCode = primary.length === 2 ? (tessMap[primary] || primary) : primary;
+                    ocrLang = finalOcrCode + '+eng'; 
                 }
 
                 // 3. Recognize with Progress

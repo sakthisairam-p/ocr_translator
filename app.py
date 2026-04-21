@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, jsonify, send_file
 from flask_cors import CORS
 from deep_translator import GoogleTranslator
 import os
+import uuid
 import tempfile
 import whisper
+import logging
 
 
 app = Flask(__name__)
@@ -12,6 +14,10 @@ CORS(app)
 # FIX for Windows Python 3.14 urllib SSL Error: Unset SSLKEYLOGFILE
 if 'SSLKEYLOGFILE' in os.environ:
     del os.environ['SSLKEYLOGFILE']
+
+# Initialize Logging to see actual errors instead of generic '...'
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Load the lightweight Whisper model globally (it will download approx 140MB on first run)
 print("Loading Whisper model...")
@@ -62,7 +68,15 @@ LANG_LIST = [
 
 @app.route('/')
 def index():
-    return render_template('index.html', languages=LANG_LIST)
+    return send_file('index.html')
+
+@app.route('/api/languages')
+def get_languages():
+    return jsonify(LANG_LIST)
+
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204
 
 @app.route('/translate', methods=['POST'])
 def translate_text():
@@ -70,8 +84,9 @@ def translate_text():
     try:
         translated = GoogleTranslator(source='auto', target=data['target']).translate(data['text'])
         return jsonify({'translated': translated})
-    except:
-        return jsonify({'translated': "..."})
+    except Exception as e:
+        logger.error(f"Translation Error: {e}")
+        return jsonify({'translated': "...", 'error': str(e)})
 
 @app.route('/detect', methods=['POST'])
 def detect_lang():
@@ -101,9 +116,10 @@ def transcribe_audio():
     if audio_file.filename == '':
         return jsonify({'error': 'No selected file'}), 400
 
-    # Save to a temporary file
+    # Save to a unique temporary file to avoid 'File in use' errors
     temp_dir = tempfile.gettempdir()
-    temp_path = os.path.join(temp_dir, "temp_audio.webm")
+    temp_filename = f"audio_{uuid.uuid4()}.webm"
+    temp_path = os.path.join(temp_dir, temp_filename)
     audio_file.save(temp_path)
 
     try:
@@ -117,12 +133,19 @@ def transcribe_audio():
             'language': detected_language
         })
     except Exception as e:
-        print("Whisper Error:", e)
-        return jsonify({'error': str(e)}), 500
+        logger.error(f"Whisper Error: {e}")
+        # Check for ffmpeg specifically as it's a common issue on Windows
+        error_msg = str(e)
+        if "ffmpeg" in error_msg.lower() or "file not found" in error_msg.lower():
+            error_msg = "FFmpeg not found. Please install FFmpeg to use voice features."
+        return jsonify({'error': error_msg}), 500
     finally:
         # Cleanup temp file
         if os.path.exists(temp_path):
-            os.remove(temp_path)
+            try:
+                os.remove(temp_path)
+            except:
+                pass
 
 @app.route('/tts', methods=['POST'])
 def tts_audio():
