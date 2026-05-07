@@ -10,7 +10,9 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Tesseract.js -->
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 
@@ -54,8 +56,8 @@
     <style>
         body {
             background-color: #020617;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0, transparent 50%), 
+            background-image:
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(30, 64, 175, 0.1) 0, transparent 50%);
             color: #f8fafc;
             min-height: 100vh;
@@ -66,26 +68,52 @@
         /* Subtle Noise Texture Overlay */
         body::before {
             content: "";
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
-            opacity: 0.03; z-index: -2; pointer-events: none;
+            opacity: 0.03;
+            z-index: -2;
+            pointer-events: none;
         }
 
         /* Ambient Background Glows */
         .ambient-glow-1 {
-            position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw;
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
             background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-            border-radius: 50%; filter: blur(80px); z-index: -1;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
         }
+
         .ambient-glow-2 {
-            position: fixed; bottom: -10%; right: -10%; width: 60vw; height: 60vw;
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
             background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
-            border-radius: 50%; filter: blur(100px); z-index: -1;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
         }
+
         .ambient-glow-3 {
-            position: fixed; top: 40%; left: 40%; width: 40vw; height: 40vw;
+            position: fixed;
+            top: 40%;
+            left: 40%;
+            width: 40vw;
+            height: 40vw;
             background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
-            border-radius: 50%; filter: blur(90px); z-index: -1;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: -1;
         }
 
         /* Glassmorphism Styles */
@@ -97,77 +125,169 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
             transition: border-color 0.3s ease;
         }
+
         .glass-panel:hover {
             border-color: rgba(139, 92, 246, 0.3);
         }
 
         .input-glass {
             background: rgba(2, 6, 23, 0.4);
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: inset 0 4px 20px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .input-glass:focus-within {
             border-color: rgba(167, 139, 250, 0.5);
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.1), inset 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.1), inset 0 4px 20px rgba(0, 0, 0, 0.5);
             background: rgba(2, 6, 23, 0.6);
         }
 
         /* Tooltip utilities */
         .tooltip-text {
-            visibility: hidden; position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
-            background-color: rgba(2, 6, 23, 0.95); color: #fff; text-align: center; border-radius: 8px;
-            padding: 6px 12px; z-index: 50; opacity: 0; transition: all 0.3s ease;
-            font-size: 0.75rem; white-space: nowrap; font-weight: 600; letter-spacing: 0.05em;
-            border: 1px solid rgba(139, 92, 246, 0.3); backdrop-filter: blur(12px);
+            visibility: hidden;
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: rgba(2, 6, 23, 0.95);
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 6px 12px;
+            z-index: 50;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(12px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7);
         }
+
         .tooltip-text::after {
-            content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px;
-            border-width: 5px; border-style: solid; border-color: rgba(2, 6, 23, 0.95) transparent transparent transparent;
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(2, 6, 23, 0.95) transparent transparent transparent;
         }
+
         @media (hover: hover) {
-            .has-tooltip:hover .tooltip-text { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
+            .has-tooltip:hover .tooltip-text {
+                visibility: visible;
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
         .btn-hover-fx {
             transition: all 0.3s ease;
         }
+
         .btn-hover-fx:hover {
             transform: translateY(-2px);
             filter: brightness(1.2);
-            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
         }
-        .btn-hover-fx:active { transform: translateY(1px); }
+
+        .btn-hover-fx:active {
+            transform: translateY(1px);
+        }
 
         /* Scrollbar */
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(167, 139, 250, 0.2); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(167, 139, 250, 0.5); }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(167, 139, 250, 0.2);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(167, 139, 250, 0.5);
+        }
 
         /* Mic Pulse */
         @keyframes pulse-purple {
-            0% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(167, 139, 250, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(167, 139, 250, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(167, 139, 250, 0);
+            }
         }
-        .pulsing { animation: pulse-purple 2s infinite; }
+
+        .pulsing {
+            animation: pulse-purple 2s infinite;
+        }
 
         /* Playback Visualizer */
-        .bar { width: 3px; height: 100%; background: #a78bfa; border-radius: 3px; animation: eq 1s ease-in-out infinite alternate; display: inline-block; margin: 0 1px; }
-        .bar:nth-child(2) { animation-delay: 0.2s; } .bar:nth-child(3) { animation-delay: 0.4s; } .bar:nth-child(4) { animation-delay: 0.1s; }
-        @keyframes eq { 0% { height: 20%; opacity: 0.5; } 100% { height: 100%; opacity: 1; } }
-
-        select option { background: #020617; color: #f8fafc; font-weight: 500; }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #f0abfc 0%, #c084fc 40%, #818cf8 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        .bar {
+            width: 3px;
+            height: 100%;
+            background: #a78bfa;
+            border-radius: 3px;
+            animation: eq 1s ease-in-out infinite alternate;
+            display: inline-block;
+            margin: 0 1px;
         }
 
-        textarea { font-size: 1.15rem !important; }
+        .bar:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .bar:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .bar:nth-child(4) {
+            animation-delay: 0.1s;
+        }
+
+        @keyframes eq {
+            0% {
+                height: 20%;
+                opacity: 0.5;
+            }
+
+            100% {
+                height: 100%;
+                opacity: 1;
+            }
+        }
+
+        select option {
+            background: #020617;
+            color: #f8fafc;
+            font-weight: 500;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #f0abfc 0%, #c084fc 40%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        textarea {
+            font-size: 1.15rem !important;
+        }
     </style>
 </head>
 
@@ -177,58 +297,72 @@
     <div class="ambient-glow-3 animate-float-slow"></div>
 
     <!-- Toast Notification -->
-    <div id="toastMsgBox" class="opacity-0 fixed top-8 left-1/2 transform -translate-x-1/2 bg-slate-900/90 backdrop-blur-xl border border-purple-500/40 text-white px-6 py-3.5 rounded-full shadow-[0_15px_40px_-5px_rgba(139,92,246,0.3)] z-[150] flex items-center gap-3 transition-all duration-400 pointer-events-none translate-y-[-20px]">
-        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-inner">
+    <div id="toastMsgBox"
+        class="opacity-0 fixed top-8 left-1/2 transform -translate-x-1/2 bg-slate-900/90 backdrop-blur-xl border border-purple-500/40 text-white px-6 py-3.5 rounded-full shadow-[0_15px_40px_-5px_rgba(139,92,246,0.3)] z-[150] flex items-center gap-3 transition-all duration-400 pointer-events-none translate-y-[-20px]">
+        <div
+            class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-inner">
             <i class="fa-solid fa-sparkles text-white text-xs"></i>
         </div>
         <span id="toastText" class="font-semibold text-sm tracking-wide"></span>
     </div>
 
     <!-- Header Section -->
-    <header class="text-center mb-8 mt-2 w-full max-w-5xl mx-auto flex flex-col items-center relative z-10 animate-float">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/40 border border-slate-700/60 backdrop-blur-md mb-4 hover:bg-slate-800/60 transition-colors cursor-default">
+    <header
+        class="text-center mb-8 mt-2 w-full max-w-5xl mx-auto flex flex-col items-center relative z-10 animate-float">
+        <div
+            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/40 border border-slate-700/60 backdrop-blur-md mb-4 hover:bg-slate-800/60 transition-colors cursor-default">
             <i class="fa-solid fa-bolt text-yellow-400 text-xs"></i>
-            <span class="text-[11px] font-bold text-slate-300 uppercase tracking-widest pb-0.5">Lightning Fast AI Engine</span>
+            <span class="text-[11px] font-bold text-slate-300 uppercase tracking-widest pb-0.5">Lightning Fast AI
+                Engine</span>
         </div>
-        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold mb-3 drop-shadow-2xl tracking-tight text-white flex items-center justify-center gap-2 sm:gap-3">
+        <h1
+            class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold mb-3 drop-shadow-2xl tracking-tight text-white flex items-center justify-center gap-2 sm:gap-3">
             Neural <span class="text-gradient">Translate</span>
         </h1>
-        <p class="text-slate-400 text-sm md:text-base max-w-xl font-medium leading-relaxed">Break language barriers instantly. Speak, scan, or type with real-time AI precision.</p>
+        <p class="text-slate-400 text-sm md:text-base max-w-xl font-medium leading-relaxed">Break language barriers
+            instantly. Speak, scan, or type with real-time AI precision.</p>
     </header>
 
     <!-- Main Translator Grid Layout -->
     <main class="w-full max-w-6xl relative z-10">
         <!-- Connecting Line (Desktop) -->
-        <div class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent hidden lg:block -translate-y-1/2 z-0 pointer-events-none"></div>
+        <div
+            class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent hidden lg:block -translate-y-1/2 z-0 pointer-events-none">
+        </div>
 
         <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 items-stretch relative">
-            
+
             <!-- ====== SOURCE PANEL ====== -->
             <section class="flex-1 glass-panel rounded-[2rem] p-4 md:p-6 flex flex-col relative z-10">
                 <!-- Toolbar -->
                 <div class="flex flex-wrap justify-between items-center mb-4 gap-3">
-                    <div class="flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-xl border border-slate-700/50 flex-1 sm:flex-none hover:border-purple-500/40 transition-colors">
+                    <div
+                        class="flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-xl border border-slate-700/50 flex-1 sm:flex-none hover:border-purple-500/40 transition-colors">
                         <i class="fa-solid fa-language text-purple-400 text-sm"></i>
-                        <select id="sourceLang" class="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer border-none py-1 appearance-none pr-4 w-full text-sm">
-                            <option value="auto" id="autoDetectOption" selected>✨ Auto-Detect</option>
-                            <option value="ta">Tamil (தமிழ்)</option>
-                            <option value="en">English (ஆங்கிலம்)</option>
-                            <option value="hi">Hindi (हिन्दी)</option>
-                            <option value="fr">French (Français)</option>
-                            <option value="es">Spanish (Español)</option>
-                        </select>
+                        <div class="relative flex-1 sm:flex-none">
+                            <select id="sourceLang"
+                                class="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer border-none py-1 appearance-none pr-4 w-full text-sm">
+                                <option value="auto" id="autoDetectOption" selected>✨ Auto-Detect</option>
+                            </select>
+                            <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500 text-[10px]">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex gap-2">
-                        <button id="pasteBtn" class="has-tooltip w-10 h-10 rounded-xl bg-slate-800/50 hover:bg-slate-700 text-slate-400 hover:text-white transition-all border border-slate-700/50 flex items-center justify-center btn-hover-fx">
+                        <button id="pasteBtn"
+                            class="has-tooltip w-10 h-10 rounded-xl bg-slate-800/50 hover:bg-slate-700 text-slate-400 hover:text-white transition-all border border-slate-700/50 flex items-center justify-center btn-hover-fx">
                             <i class="fa-solid fa-paste"></i>
                             <span class="tooltip-text">Paste</span>
                         </button>
-                        <button id="clearBtn" class="has-tooltip w-10 h-10 rounded-xl bg-slate-800/50 hover:bg-red-500/20 text-slate-400 hover:text-red-400 transition-all border border-slate-700/50 flex items-center justify-center btn-hover-fx">
+                        <button id="clearBtn"
+                            class="has-tooltip w-10 h-10 rounded-xl bg-slate-800/50 hover:bg-red-500/20 text-slate-400 hover:text-red-400 transition-all border border-slate-700/50 flex items-center justify-center btn-hover-fx">
                             <i class="fa-solid fa-eraser"></i>
                             <span class="tooltip-text">Clear Text</span>
                         </button>
-                        <button id="copySourceBtn" onclick="copySourceText()" class="has-tooltip w-10 h-10 rounded-xl bg-slate-800/50 hover:bg-slate-700 text-slate-400 hover:text-white transition-all border border-slate-700/50 flex items-center justify-center btn-hover-fx">
+                        <button id="copySourceBtn" onclick="copySourceText()"
+                            class="has-tooltip w-10 h-10 rounded-xl bg-slate-800/50 hover:bg-slate-700 text-slate-400 hover:text-white transition-all border border-slate-700/50 flex items-center justify-center btn-hover-fx">
                             <i id="copySourceIcon" class="fa-regular fa-copy"></i>
                             <span class="tooltip-text">Copy</span>
                         </button>
@@ -240,103 +374,142 @@
                     <textarea id="inputText"
                         class="w-full h-full flex-1 input-glass rounded-2xl p-5 pb-20 text-slate-100 placeholder-slate-500 outline-none custom-scrollbar resize-none leading-relaxed relative z-10"
                         placeholder="Type, paste, or speak text here..."></textarea>
-                    
+
                     <!-- Floating Input Actions -->
-                    <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center z-20 pointer-events-none">
+                    <div
+                        class="absolute bottom-4 left-4 right-4 flex justify-between items-center z-20 pointer-events-none">
                         <div class="flex gap-2 pointer-events-auto items-center">
                             <div class="relative pointer-events-auto">
-                                <button id="micBtn" class="has-tooltip w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 hover:from-purple-600 hover:to-indigo-600 text-white flex items-center justify-center transition-all border border-slate-600/50 shadow-lg btn-hover-fx">
+                                <button id="micBtn"
+                                    class="has-tooltip w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 hover:from-purple-600 hover:to-indigo-600 text-white flex items-center justify-center transition-all border border-slate-600/50 shadow-lg btn-hover-fx">
                                     <i id="micIconMain" class="fa-solid fa-microphone text-lg"></i>
                                     <span class="tooltip-text">Voice Options</span>
                                 </button>
-                                
-                                <div id="micOptions" class="hidden absolute bottom-[120%] left-0 bg-slate-800/95 backdrop-blur-xl p-2 rounded-xl border border-slate-600 shadow-2xl w-48 z-30 transition-all origin-bottom-left group">
-                                    <button onclick="startLiveSpeakingMode()" class="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-purple-600 rounded-lg transition-all flex items-center gap-2 mb-1">
+
+                                <div id="micOptions"
+                                    class="hidden absolute bottom-[120%] left-0 bg-slate-800/95 backdrop-blur-xl p-2 rounded-xl border border-slate-600 shadow-2xl w-48 z-30 transition-all origin-bottom-left group">
+                                    <button onclick="startLiveSpeakingMode()"
+                                        class="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-purple-600 rounded-lg transition-all flex items-center gap-2 mb-1">
                                         <i class="fa-solid fa-user-voice text-purple-300 w-5"></i> Live Speaking
                                     </button>
-                                    <button onclick="startLoudspeakerMode()" class="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-indigo-600 rounded-lg transition-all flex items-center gap-2">
+                                    <button onclick="startLoudspeakerMode()"
+                                        class="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-indigo-600 rounded-lg transition-all flex items-center gap-2">
                                         <i class="fa-solid fa-bullhorn text-indigo-300 w-5"></i> Loudspeaker
                                     </button>
                                 </div>
                             </div>
 
                             <div class="relative pointer-events-auto">
-                                <button id="camMenuBtn" class="has-tooltip w-12 h-12 rounded-xl bg-slate-800 hover:bg-indigo-600 text-white flex items-center justify-center transition-all border border-slate-600/50 shadow-lg btn-hover-fx">
+                                <button id="camMenuBtn"
+                                    class="has-tooltip w-12 h-12 rounded-xl bg-slate-800 hover:bg-indigo-600 text-white flex items-center justify-center transition-all border border-slate-600/50 shadow-lg btn-hover-fx">
                                     <i class="fa-solid fa-camera text-lg"></i>
                                     <span class="tooltip-text">Scan Image</span>
                                 </button>
 
                                 <!-- Camera Dropdown -->
-                                <div id="camOptions" class="hidden absolute bottom-[120%] left-0 bg-slate-800/95 backdrop-blur-xl p-2 rounded-xl border border-slate-600 shadow-2xl w-48 z-30 transition-all origin-bottom-left">
-                                    <button onclick="startLiveCam()" class="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-purple-600 rounded-lg transition-all flex items-center gap-2 mb-1">
+                                <div id="camOptions"
+                                    class="hidden absolute bottom-[120%] left-0 bg-slate-800/95 backdrop-blur-xl p-2 rounded-xl border border-slate-600 shadow-2xl w-48 z-30 transition-all origin-bottom-left">
+                                    <button onclick="startLiveCam()"
+                                        class="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-purple-600 rounded-lg transition-all flex items-center gap-2 mb-1">
                                         <i class="fa-solid fa-video text-purple-300 w-5"></i> Live Camera
                                     </button>
-                                    <input type="file" id="galleryInput" class="hidden" accept="image/*" onchange="handleGallery(event)">
-                                    <button onclick="document.getElementById('galleryInput').click()" class="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-indigo-600 rounded-lg transition-all flex items-center gap-2">
+                                    <input type="file" id="galleryInput" class="hidden" accept="image/*"
+                                        onchange="handleGallery(event)">
+                                    <button onclick="document.getElementById('galleryInput').click()"
+                                        class="w-full text-left px-3 py-2.5 text-sm font-semibold text-slate-200 hover:bg-indigo-600 rounded-lg transition-all flex items-center gap-2">
                                         <i class="fa-regular fa-image text-indigo-300 w-5"></i> Upload Image
                                     </button>
                                 </div>
                             </div>
 
-                            <label class="has-tooltip flex items-center justify-center bg-slate-800 border border-slate-600/50 rounded-xl px-2 h-12 ml-1 cursor-pointer shadow-lg hover:bg-slate-700 transition-colors btn-hover-fx pointer-events-auto">
+                            <label
+                                class="has-tooltip flex items-center justify-center bg-slate-800 border border-slate-600/50 rounded-xl px-2 h-12 ml-1 cursor-pointer shadow-lg hover:bg-slate-700 transition-colors btn-hover-fx pointer-events-auto">
                                 <div class="relative w-8 h-4">
                                     <input type="checkbox" id="autoTranslateToggle" class="sr-only" checked>
-                                    <div class="block bg-slate-600 w-8 h-4 rounded-full transition-colors toggle-bg pointer-events-none border border-slate-500"></div>
-                                    <div class="dot absolute left-[2px] top-[2px] bg-white w-3 h-3 rounded-full transition-transform pointer-events-none"></div>
+                                    <div
+                                        class="block bg-slate-600 w-8 h-4 rounded-full transition-colors toggle-bg pointer-events-none border border-slate-500">
+                                    </div>
+                                    <div
+                                        class="dot absolute left-[2px] top-[2px] bg-white w-3 h-3 rounded-full transition-transform pointer-events-none">
+                                    </div>
                                 </div>
-                                <span class="ml-2 text-[9px] text-slate-300 font-bold uppercase tracking-widest hidden sm:block">Auto-Translate</span>
+                                <span
+                                    class="ml-2 text-[9px] text-slate-300 font-bold uppercase tracking-widest hidden sm:block">Auto-Translate</span>
                                 <span class="tooltip-text">Translate live while speaking</span>
                                 <style>
-                                    #autoTranslateToggle:checked ~ .toggle-bg { background-color: #8b5cf6; border-color: #7c3aed; }
-                                    #autoTranslateToggle:checked ~ .dot { transform: translateX(100%); }
+                                    #autoTranslateToggle:checked~.toggle-bg {
+                                        background-color: #8b5cf6;
+                                        border-color: #7c3aed;
+                                    }
+
+                                    #autoTranslateToggle:checked~.dot {
+                                        transform: translateX(100%);
+                                    }
                                 </style>
                             </label>
                         </div>
-                        <span id="charCount" class="text-[10px] text-slate-400 font-bold bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-700/50 pointer-events-none">0 / 5000</span>
+                        <span id="charCount"
+                            class="text-[10px] text-slate-400 font-bold bg-slate-900/80 px-3 py-1.5 rounded-lg border border-slate-700/50 pointer-events-none">0
+                            / 5000</span>
                     </div>
 
                     <!-- Scan Loading Overlay -->
-                    <div id="ocrLoading" class="hidden absolute inset-0 bg-slate-900/90 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center border border-purple-500/30 z-[25]">
-                        <div class="w-16 h-16 border-4 border-slate-700 border-t-purple-500 rounded-full animate-spin mb-4"></div>
-                        <span class="text-xs font-bold text-purple-400 tracking-widest uppercase">Analyzing Image...</span>
+                    <div id="ocrLoading"
+                        class="hidden absolute inset-0 bg-slate-900/90 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center border border-purple-500/30 z-[25]">
+                        <div
+                            class="w-16 h-16 border-4 border-slate-700 border-t-purple-500 rounded-full animate-spin mb-4">
+                        </div>
+                        <span class="text-xs font-bold text-purple-400 tracking-widest uppercase">Analyzing
+                            Image...</span>
                     </div>
                 </div>
             </section>
 
             <!-- ====== CENTER CONTROLS ====== -->
             <!-- Note: On LG it sits between panels. On SM it sits vertically between them. -->
-            <div class="flex lg:flex-col items-center justify-center gap-3 lg:gap-4 py-2 lg:py-0 shrink-0 z-20 relative">
-                
+            <div
+                class="flex lg:flex-col items-center justify-center gap-3 lg:gap-4 py-2 lg:py-0 shrink-0 z-20 relative">
+
                 <!-- Swap Button -->
-                <button id="swapBtn" class="has-tooltip lg:-mt-4 w-12 h-12 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-600 shadow-[0_4px_20px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all hover:rotate-180 duration-500 active:scale-90">
+                <button id="swapBtn"
+                    class="has-tooltip lg:-mt-4 w-12 h-12 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-600 shadow-[0_4px_20px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all hover:rotate-180 duration-500 active:scale-90">
                     <i class="fa-solid fa-right-left rotate-90 lg:rotate-0"></i>
                     <span class="tooltip-text">Swap Languages</span>
                 </button>
 
                 <!-- Translate Button -->
-                <button id="translateBtn" class="has-tooltip relative group bg-gradient-to-b from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white font-bold h-16 w-16 lg:h-20 lg:w-20 rounded-2xl lg:rounded-[2rem] shadow-[0_0_25px_rgba(139,92,246,0.5)] flex items-center justify-center transition-all hover:-translate-y-1 active:translate-y-1 border border-white/20 overflow-hidden">
-                    <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <i class="fa-solid fa-wand-magic-sparkles text-2xl lg:text-3xl group-hover:scale-110 transition-transform duration-300 drop-shadow-md"></i>
+                <button id="translateBtn"
+                    class="has-tooltip relative group bg-gradient-to-b from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white font-bold h-16 w-16 lg:h-20 lg:w-20 rounded-2xl lg:rounded-[2rem] shadow-[0_0_25px_rgba(139,92,246,0.5)] flex items-center justify-center transition-all hover:-translate-y-1 active:translate-y-1 border border-white/20 overflow-hidden">
+                    <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <i
+                        class="fa-solid fa-wand-magic-sparkles text-2xl lg:text-3xl group-hover:scale-110 transition-transform duration-300 drop-shadow-md"></i>
                     <span class="tooltip-text">Translate Now</span>
                 </button>
             </div>
 
             <!-- ====== TARGET PANEL ====== -->
-            <section class="flex-1 glass-panel rounded-[2rem] p-4 md:p-6 flex flex-col relative z-10 border-indigo-500/20">
+            <section
+                class="flex-1 glass-panel rounded-[2rem] p-4 md:p-6 flex flex-col relative z-10 border-indigo-500/20">
                 <!-- Toolbar -->
                 <div class="flex flex-wrap justify-between items-center mb-4 gap-3">
-                    <div class="flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-xl border border-indigo-500/30 flex-1 sm:flex-none shadow-[inset_0_0_10px_rgba(79,70,229,0.1)] hover:border-indigo-400/50 transition-colors">
+                    <div
+                        class="flex items-center gap-2 bg-slate-900/60 px-4 py-2 rounded-xl border border-indigo-500/30 flex-1 sm:flex-none shadow-[inset_0_0_10px_rgba(79,70,229,0.1)] hover:border-indigo-400/50 transition-colors">
                         <i class="fa-solid fa-earth-americas text-indigo-400 text-sm"></i>
-                        <select id="targetLang" class="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer border-none py-1 appearance-none pr-4 w-full text-sm">
-                            <option value="en">English (ஆங்கிலம்)</option>
-                            <option value="ta" selected>Tamil (தமிழ்)</option>
-                            <option value="hi">Hindi (हिन्दी)</option>
-                            <option value="fr">French (Français)</option>
-                        </select>
+                        <div class="relative flex-1 sm:flex-none">
+                            <select id="targetLang"
+                                class="bg-transparent text-slate-100 font-bold focus:outline-none cursor-pointer border-none py-1 appearance-none pr-4 w-full text-sm">
+                                <option value="en">Loading...</option>
+                            </select>
+                            <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-indigo-500 text-[10px]">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex gap-2">
-                        <button id="copyTargetBtn" class="has-tooltip w-10 h-10 rounded-xl bg-slate-800/50 hover:bg-slate-700 text-slate-400 hover:text-white transition-all border border-slate-700/50 flex items-center justify-center btn-hover-fx">
+                        <button id="copyTargetBtn"
+                            class="has-tooltip w-10 h-10 rounded-xl bg-slate-800/50 hover:bg-slate-700 text-slate-400 hover:text-white transition-all border border-slate-700/50 flex items-center justify-center btn-hover-fx">
                             <i id="copyTargetIcon" class="fa-regular fa-copy"></i>
                             <span class="tooltip-text">Copy</span>
                         </button>
@@ -350,30 +523,40 @@
                         placeholder="Translation will appear here..."></textarea>
 
                     <!-- Floating Output Actions -->
-                    <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center z-20 pointer-events-none">
+                    <div
+                        class="absolute bottom-4 left-4 right-4 flex justify-between items-center z-20 pointer-events-none">
                         <div class="flex gap-2 pointer-events-auto items-center">
-                            <button id="speakBtn" class="has-tooltip w-12 h-12 rounded-xl bg-slate-800 text-indigo-400 hover:text-white hover:bg-indigo-600 flex items-center justify-center transition-all border border-indigo-500/30 shadow-lg btn-hover-fx group">
+                            <button id="speakBtn"
+                                class="has-tooltip w-12 h-12 rounded-xl bg-slate-800 text-indigo-400 hover:text-white hover:bg-indigo-600 flex items-center justify-center transition-all border border-indigo-500/30 shadow-lg btn-hover-fx group">
                                 <i id="speakIcon" class="fa-solid fa-volume-high text-lg"></i>
                                 <span class="tooltip-text">Listen</span>
                             </button>
-                            
+
                             <!-- Visualizer (Hidden by default) -->
                             <div id="audioVisualizer" class="hidden h-6 items-end gap-0.5 ml-2">
-                                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
                             </div>
                         </div>
 
                         <!-- Speed Slider -->
-                        <div class="has-tooltip h-8 px-3 bg-slate-900/90 rounded-lg border border-slate-700/50 flex items-center gap-2 pointer-events-auto">
+                        <div
+                            class="has-tooltip h-8 px-3 bg-slate-900/90 rounded-lg border border-slate-700/50 flex items-center gap-2 pointer-events-auto">
                             <i class="fa-solid fa-gauge-high text-[10px] text-slate-400"></i>
-                            <input type="range" id="speechSpeed" min="0.5" max="2" step="0.25" value="1" class="w-16 h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                            <input type="range" id="speechSpeed" min="0.5" max="2" step="0.25" value="1"
+                                class="w-16 h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-500">
                             <span class="tooltip-text">Playback Speed</span>
                         </div>
                     </div>
 
                     <!-- Translation Loading Overlay -->
-                    <div id="translateLoading" class="hidden absolute inset-0 bg-slate-900/90 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center z-[25] border border-indigo-500/30">
-                        <div class="w-16 h-16 border-4 border-slate-700 border-t-indigo-500 rounded-full animate-spin mb-4"></div>
+                    <div id="translateLoading"
+                        class="hidden absolute inset-0 bg-slate-900/90 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center z-[25] border border-indigo-500/30">
+                        <div
+                            class="w-16 h-16 border-4 border-slate-700 border-t-indigo-500 rounded-full animate-spin mb-4">
+                        </div>
                         <span class="text-xs font-bold text-indigo-400 tracking-widest uppercase">Translating...</span>
                     </div>
                 </div>
@@ -382,35 +565,50 @@
     </main>
 
     <!-- Camera Modal Overlay -->
-    <div id="camOverlay" class="hidden fixed inset-0 bg-black/95 backdrop-blur-xl z-[200] flex flex-col items-center justify-center p-4">
+    <div id="camOverlay"
+        class="hidden fixed inset-0 bg-black/95 backdrop-blur-xl z-[200] flex flex-col items-center justify-center p-4">
         <div class="relative w-full max-w-lg">
             <div class="text-center mb-4">
                 <h3 class="text-white font-heading text-xl font-bold">Live OCR Scanner</h3>
                 <p class="text-slate-400 text-xs">Align text inside the frame and capture</p>
             </div>
-            
+
             <div class="p-2 rounded-3xl border border-slate-700 shadow-2xl bg-slate-900/80">
-                <div class="relative rounded-2xl overflow-hidden bg-black max-h-[60vh] flex items-center justify-center">
+                <div
+                    class="relative rounded-2xl overflow-hidden bg-black max-h-[60vh] flex items-center justify-center">
                     <video id="video" class="w-full h-auto object-contain" autoplay playsinline></video>
                     <!-- Scanner Line -->
-                    <div class="absolute top-0 left-0 w-full h-[20%] bg-gradient-to-b from-transparent via-purple-500/30 to-transparent animate-[float_2s_infinite] pointer-events-none"></div>
-                    
+                    <div
+                        class="absolute top-0 left-0 w-full h-[20%] bg-gradient-to-b from-transparent via-purple-500/30 to-transparent animate-[float_2s_infinite] pointer-events-none">
+                    </div>
+
                     <!-- Frame Viewfinder -->
-                    <div class="absolute inset-4 border border-white/20 rounded-lg pointer-events-none flex items-center justify-center">
-                        <div class="w-8 h-8 border-t-2 border-l-2 border-purple-500 absolute top-0 left-0 rounded-tl-lg"></div>
-                        <div class="w-8 h-8 border-t-2 border-r-2 border-purple-500 absolute top-0 right-0 rounded-tr-lg"></div>
-                        <div class="w-8 h-8 border-b-2 border-l-2 border-purple-500 absolute bottom-0 left-0 rounded-bl-lg"></div>
-                        <div class="w-8 h-8 border-b-2 border-r-2 border-purple-500 absolute bottom-0 right-0 rounded-br-lg"></div>
+                    <div
+                        class="absolute inset-4 border border-white/20 rounded-lg pointer-events-none flex items-center justify-center">
+                        <div
+                            class="w-8 h-8 border-t-2 border-l-2 border-purple-500 absolute top-0 left-0 rounded-tl-lg">
+                        </div>
+                        <div
+                            class="w-8 h-8 border-t-2 border-r-2 border-purple-500 absolute top-0 right-0 rounded-tr-lg">
+                        </div>
+                        <div
+                            class="w-8 h-8 border-b-2 border-l-2 border-purple-500 absolute bottom-0 left-0 rounded-bl-lg">
+                        </div>
+                        <div
+                            class="w-8 h-8 border-b-2 border-r-2 border-purple-500 absolute bottom-0 right-0 rounded-br-lg">
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="mt-8 flex gap-4 justify-center items-center">
-                <button onclick="closeCam()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 h-14 w-14 rounded-full flex items-center justify-center transition-all active:scale-95 border border-slate-600">
+                <button onclick="closeCam()"
+                    class="bg-slate-800 hover:bg-slate-700 text-slate-300 h-14 w-14 rounded-full flex items-center justify-center transition-all active:scale-95 border border-slate-600">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
-                <button onclick="capturePic()" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-0 rounded-full font-bold shadow-lg transition-all active:scale-95 flex items-center gap-2 h-14 flex-1 max-w-[200px] justify-center text-lg hover:shadow-purple-500/50 hover:-translate-y-1">
-                    <i class="fa-solid fa-camera"></i> Capture 
+                <button onclick="capturePic()"
+                    class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-0 rounded-full font-bold shadow-lg transition-all active:scale-95 flex items-center gap-2 h-14 flex-1 max-w-[200px] justify-center text-lg hover:shadow-purple-500/50 hover:-translate-y-1">
+                    <i class="fa-solid fa-camera"></i> Capture
                 </button>
             </div>
         </div>
@@ -437,25 +635,25 @@
             try {
                 const res = await fetch('/api/languages');
                 const langs = await res.json();
-                
+
                 // Keep the auto-detect option in sourceLang
                 const autoDetectOpt = document.getElementById('autoDetectOption').outerHTML;
-                
+
                 let sourceOptions = autoDetectOpt;
                 let targetOptions = '';
-                
+
                 langs.forEach(lang => {
                     sourceOptions += `<option value="${lang.code}">${lang.name}</option>`;
                     targetOptions += `<option value="${lang.code}" ${lang.code === 'ta' ? 'selected' : ''}>${lang.name}</option>`;
                 });
-                
+
                 sourceLang.innerHTML = sourceOptions;
                 targetLang.innerHTML = targetOptions;
             } catch (err) {
                 console.error("Failed to load languages:", err);
             }
         }
-        
+
         // Initialize languages on load
         document.addEventListener('DOMContentLoaded', loadLanguages);
 
@@ -465,7 +663,7 @@
             document.getElementById('toastText').textContent = message;
             toast.classList.remove('opacity-0', 'translate-y-[-20px]');
             toast.classList.add('opacity-100', 'translate-y-0');
-            setTimeout(() => { 
+            setTimeout(() => {
                 toast.classList.remove('opacity-100', 'translate-y-0');
                 toast.classList.add('opacity-0', 'translate-y-[-20px]');
             }, duration);
@@ -485,7 +683,7 @@
         // Auto-Translate Logic for Dropdowns and Input
         function checkAndTranslate() {
             const autoTx = document.getElementById('autoTranslateToggle');
-            if(inputText.value.trim() && autoTx && autoTx.checked) {
+            if (inputText.value.trim() && autoTx && autoTx.checked) {
                 doTranslate();
             }
         }
@@ -496,7 +694,7 @@
             if (inputText.value.trim().length > 2) {
                 detectTimer = setTimeout(detectLanguage, 1000);
                 // Also trigger translate if auto-tx is on (debounced)
-                setTimeout(checkAndTranslate, 1200); 
+                setTimeout(checkAndTranslate, 1200);
             } else {
                 document.getElementById('autoDetectOption').textContent = '✨ Auto-Detect';
             }
@@ -508,18 +706,18 @@
 
         // 1. Swap Button Logic
         document.getElementById('swapBtn').addEventListener('click', () => {
-            if(sourceLang.value === 'auto') {
+            if (sourceLang.value === 'auto') {
                 showToast("Cannot swap while Auto-Detect is selected.");
                 return;
             }
             const tempVal = sourceLang.value;
             sourceLang.value = targetLang.value;
             targetLang.value = tempVal;
-            
+
             const tempText = inputText.value;
             inputText.value = outputText.value;
             outputText.value = tempText;
-            
+
             autoResize();
             showToast("Languages Swapped");
             checkAndTranslate();
@@ -538,7 +736,7 @@
         document.getElementById('pasteBtn').addEventListener('click', async () => {
             try {
                 const text = await navigator.clipboard.readText();
-                if(text) {
+                if (text) {
                     inputText.value += text;
                     autoResize();
                     showToast("Pasted from clipboard");
@@ -559,7 +757,7 @@
                 icon.className = 'fa-solid fa-check text-green-400';
                 showToast("Copied to clipboard!");
                 setTimeout(() => icon.className = 'fa-regular fa-copy', 2000);
-            } catch (err) {}
+            } catch (err) { }
         }
         function copySourceText() { handleCopy('inputText', 'copySourceIcon'); }
         document.getElementById('copyTargetBtn').addEventListener('click', () => handleCopy('outputText', 'copyTargetIcon'));
@@ -571,8 +769,8 @@
             try {
                 const res = await fetch('/detect', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({text})
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text })
                 });
                 const data = await res.json();
                 const autoOpt = document.getElementById('autoDetectOption');
@@ -583,7 +781,7 @@
                         // Keep it on 'auto' but the label shows the detected lang
                     }
                 }
-            } catch (err) {}
+            } catch (err) { }
         }
 
         // Translation Call
@@ -620,16 +818,16 @@
         const micIcon = document.getElementById('micIconMain');
         const micOptions = document.getElementById('micOptions');
         const autoTx = document.getElementById('autoTranslateToggle');
-        
+
         let isListening = false;
         let currentMicMode = null; // 'live' or 'loudspeaker'
-        
+
         // Loudspeaker vars
         let mediaRecorder = null;
         let audioContext = null;
         let analyser = null;
         let animationId = null;
-        
+
         // Live Speaking vars
         let liveRecognition = null;
 
@@ -662,22 +860,22 @@
         function startLiveSpeakingMode() {
             if (isListening) stopAllListening();
             micOptions.classList.add('hidden');
-            
+
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
                 showToast("Speech Recognition API not supported in this browser.");
                 return;
             }
-            
+
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             liveRecognition = new SpeechRecognition();
             liveRecognition.continuous = true;
             liveRecognition.interimResults = true;
-            
+
             if (sourceLang.value !== 'auto') {
                 const langCodeMap = { 'en': 'en-IN', 'ta': 'ta-IN', 'hi': 'hi-IN', 'fr': 'fr-FR', 'es': 'es-ES' };
                 liveRecognition.lang = langCodeMap[sourceLang.value] || sourceLang.value;
             }
-            
+
             liveRecognition.onstart = () => {
                 isListening = true;
                 currentMicMode = 'live';
@@ -685,9 +883,9 @@
                 micIcon.classList.replace('fa-microphone', 'fa-stop');
                 showToast("Live Speaking Mode Active. Listening...");
             };
-            
+
             let finalTranscript = inputText.value;
-            
+
             liveRecognition.onresult = (event) => {
                 let interimTranscript = '';
                 let newFinal = '';
@@ -698,22 +896,22 @@
                         interimTranscript += event.results[i][0].transcript;
                     }
                 }
-                
+
                 if (newFinal) {
                     finalTranscript += (finalTranscript ? ' ' : '') + newFinal;
                     inputText.value = finalTranscript;
-                    if(autoTx && autoTx.checked) doTranslate();
+                    if (autoTx && autoTx.checked) doTranslate();
                 } else {
                     inputText.value = finalTranscript + (finalTranscript ? ' ' : '') + interimTranscript;
                 }
                 autoResize();
             };
-            
+
             liveRecognition.onerror = (event) => {
                 console.error("Speech Recognition Error:", event.error);
                 if (event.error === 'not-allowed') showToast("Mic Access Denied!");
             };
-            
+
             liveRecognition.onend = () => {
                 if (isListening && currentMicMode === 'live') {
                     // Restart for continuous flow if stopped by browser timeout
@@ -722,7 +920,7 @@
                     stopAllListening();
                 }
             };
-            
+
             try {
                 liveRecognition.start();
             } catch (err) {
@@ -733,23 +931,23 @@
         async function startLoudspeakerMode() {
             if (isListening) stopAllListening();
             micOptions.classList.add('hidden');
-            
+
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 startVisualizer(stream);
-                
+
                 mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
                 mediaRecorder.ondataavailable = async (event) => {
                     if (event.data.size > 0 && isListening && currentMicMode === 'loudspeaker') {
                         const audioBlob = new Blob([event.data], { type: 'audio/webm' });
                         const formData = new FormData();
                         formData.append('audio', audioBlob, 'chunk.webm');
-                        
+
                         try {
                             const res = await fetch('/transcribe', { method: 'POST', body: formData });
                             if (res.ok) {
                                 const data = await res.json();
-                                if(data.text && data.text.trim().length > 1) {
+                                if (data.text && data.text.trim().length > 1) {
                                     const currentTarget = targetLang.value;
                                     const translationRes = await fetch('/translate', {
                                         method: 'POST',
@@ -766,8 +964,8 @@
                                     }
                                 }
                             }
-                        } catch (err) { 
-                            console.error("Loudspeaker Whisper Error:", err); 
+                        } catch (err) {
+                            console.error("Loudspeaker Whisper Error:", err);
                         }
                     }
                 };
@@ -787,21 +985,21 @@
 
         function stopAllListening() {
             isListening = false;
-            
+
             if (liveRecognition) {
                 liveRecognition.stop();
                 liveRecognition = null;
             }
-            
+
             if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
             if (audioContext) audioContext.close();
             if (animationId) cancelAnimationFrame(animationId);
-            
+
             currentMicMode = null;
-            
+
             const visualizerBars = document.getElementById('audioVisualizer');
             if (visualizerBars) visualizerBars.classList.add('hidden');
-            
+
             micBtn.classList.remove('ring-4', 'ring-purple-500/50', 'bg-purple-500/20', 'text-purple-400', 'ring-indigo-500/50', 'bg-indigo-500/20', 'text-indigo-400', 'pulsing');
             micIcon.classList.replace('fa-stop', 'fa-microphone');
         }
@@ -814,9 +1012,9 @@
                 micOptions.classList.toggle('hidden');
             }
         });
-        
+
         document.addEventListener('click', (e) => {
-            if(micOptions && !micOptions.classList.contains('hidden') && !micOptions.contains(e.target)) {
+            if (micOptions && !micOptions.classList.contains('hidden') && !micOptions.contains(e.target)) {
                 micOptions.classList.add('hidden');
             }
         });
@@ -829,7 +1027,7 @@
 
         speakBtn.addEventListener('click', async () => {
             if (!outputText.value) return showToast("No text to speak!");
-            
+
             if (currentAudio && !currentAudio.paused) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
@@ -840,19 +1038,19 @@
 
             speakIcon.classList.replace('fa-volume-high', 'fa-spinner');
             speakIcon.classList.add('fa-spin');
-            
+
             try {
                 const response = await fetch('/tts', {
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ text: outputText.value, lang: targetLang.value })
                 });
                 if (!response.ok) throw new Error("TTS Failed");
-                
+
                 const blob = await response.blob();
                 const url = window.URL.createObjectURL(blob);
                 currentAudio = new Audio(url);
                 currentAudio.playbackRate = parseFloat(document.getElementById('speechSpeed').value);
-                
+
                 currentAudio.onplay = () => {
                     speakIcon.classList.remove('fa-spinner', 'fa-spin');
                     speakIcon.classList.add('fa-circle-stop');
@@ -894,7 +1092,7 @@
                     const ctx = procCanvas.getContext('2d');
                     procCanvas.width = img.width;
                     procCanvas.height = img.height;
-                    
+
                     // Slightly softer filters to preserve non-latin script curves (like Tamil/Malayalam)
                     ctx.filter = 'grayscale(1) contrast(1.1) brightness(1.05)';
                     ctx.drawImage(img, 0, 0);
@@ -917,23 +1115,23 @@
                 // 2. Languages
                 let selectedLang = sourceLang.value;
                 let ocrLang = 'eng';
-                
-                const tessMap = { 
-                    'ta': 'tam', 'hi': 'hin', 'en': 'eng', 'fr': 'fra', 'es': 'spa', 
+
+                const tessMap = {
+                    'ta': 'tam', 'hi': 'hin', 'en': 'eng', 'fr': 'fra', 'es': 'spa',
                     'ml': 'mal', 'te': 'tel', 'kn': 'kan', 'gu': 'guj', 'pa': 'pan',
                     'mr': 'mar', 'bn': 'ben', 'ur': 'urd', 'ar': 'ara'
                 };
 
                 if (selectedLang === 'auto') {
                     // Broader auto-detect list including popular regional languages
-                    ocrLang = 'eng+tam+hin+mal+tel+kan+ben+mar'; 
+                    ocrLang = 'eng+tam+hin+mal+tel+kan+ben+mar';
                 } else if (selectedLang === 'en') {
                     ocrLang = 'eng';
                 } else {
                     const primary = tessMap[selectedLang] || selectedLang;
                     // Standardize Tesseract codes (some are 2-letter in our list but 3-letter in Tesseract)
                     const finalOcrCode = primary.length === 2 ? (tessMap[primary] || primary) : primary;
-                    ocrLang = finalOcrCode + '+eng'; 
+                    ocrLang = finalOcrCode + '+eng';
                 }
 
                 // 3. Recognize with Progress
@@ -952,7 +1150,7 @@
                         .replace(/[|\[\]{}­]/g, '')
                         .replace(/\n\s*\n/g, '\n')
                         .trim();
-                    
+
                     inputText.value = cleanedText;
                     inputText.dispatchEvent(new Event('input'));
                     setTimeout(() => { doTranslate(); }, 800);
@@ -1010,4 +1208,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -24,51 +24,91 @@ print("Loading Whisper model...")
 whisper_model = whisper.load_model("base")
 print("Whisper model loaded!")
 
-# UNGA FULL 100+ LANGUAGES LIST (Onnu kooda kurakala!)
+# EXHAUSTIVE GLOBAL 130+ LANGUAGES LIST
 LANG_LIST = [
-    {'code': 'ta', 'name': 'Tamil (தமிழ்)'}, {'code': 'en', 'name': 'English'},
-    {'code': 'hi', 'name': 'Hindi (हिन्दी)'}, {'code': 'te', 'name': 'Telugu (తెలుగు)'},
-    {'code': 'ml', 'name': 'Malayalam (മലയാളം)'}, {'code': 'kn', 'name': 'Kannada (ಕನ್ನಡ)'},
-    {'code': 'mr', 'name': 'Marathi (मराठी)'}, {'code': 'bn', 'name': 'Bengali (বাংলা)'},
-    {'code': 'gu', 'name': 'Gujarati (ગુજરાતી)'}, {'code': 'pa', 'name': 'Punjabi (ਪੰਜਾਬੀ)'},
-    {'code': 'ur', 'name': 'Urdu (اردو)'}, {'code': 'ar', 'name': 'Arabic (العربية)'},
-    {'code': 'fr', 'name': 'French (Français)'}, {'code': 'de', 'name': 'German (Deutsch)'},
-    {'code': 'es', 'name': 'Spanish (Español)'}, {'code': 'it', 'name': 'Italian (Italiano)'},
-    {'code': 'ja', 'name': 'Japanese (日本語)'}, {'code': 'ko', 'name': 'Korean (한국어)'},
-    {'code': 'ru', 'name': 'Russian (Русский)'}, {'code': 'zh-CN', 'name': 'Chinese (Simplified)'},
+    # --- POPULAR & INDIAN REGIONAL ---
+    {'code': 'ta', 'name': 'Tamil (தமிழ்)'},
+    {'code': 'en', 'name': 'English'},
+    {'code': 'hi', 'name': 'Hindi (हिन्दी)'},
+    {'code': 'ml', 'name': 'Malayalam (മലയാളം)'},
+    {'code': 'te', 'name': 'Telugu (తెలుగు)'},
+    {'code': 'kn', 'name': 'Kannada (ಕನ್ನಡ)'},
+    {'code': 'mr', 'name': 'Marathi (മরাठी)'},
+    {'code': 'gu', 'name': 'Gujarati (ગુજરાતી)'},
+    {'code': 'pa', 'name': 'Punjabi (ਪੰਜਾਬੀ)'},
+    {'code': 'bn', 'name': 'Bengali (বাংলা)'},
+    {'code': 'ur', 'name': 'Urdu (اردو)'},
+    {'code': 'as', 'name': 'Assamese (অসমীয়া)'},
+    {'code': 'or', 'name': 'Odia (ଓଡ଼ିଆ)'},
+    {'code': 'sa', 'name': 'Sanskrit (संस्कृतम्)'},
+    {'code': 'bho', 'name': 'Bhojpuri (भोजपुरी)'},
+    {'code': 'mai', 'name': 'Maithili (मैथिली)'},
+    {'code': 'doi', 'name': 'Dogri (डोगरी)'},
+    {'code': 'ks', 'name': 'Kashmiri (کأشُر)'},
+    {'code': 'sd', 'name': 'Sindhi (سنڌي)'},
+    {'code': 'mni-Mtei', 'name': 'Meiteilon (Manipuri)'},
+    {'code': 'lus', 'name': 'Mizo (Mizo ṭawng)'},
+    {'code': 'gom', 'name': 'Konkani (कोंकणी)'},
+
+    # --- GLOBAL POPULAR ---
+    {'code': 'ar', 'name': 'Arabic (العربية)'},
+    {'code': 'fr', 'name': 'French (Français)'},
+    {'code': 'de', 'name': 'German (Deutsch)'},
+    {'code': 'es', 'name': 'Spanish (Español)'},
+    {'code': 'it', 'name': 'Italian (Italiano)'},
+    {'code': 'ja', 'name': 'Japanese (日本語)'},
+    {'code': 'ko', 'name': 'Korean (한국어)'},
+    {'code': 'ru', 'name': 'Russian (Русский)'},
+    {'code': 'pt', 'name': 'Portuguese (Português)'},
+    {'code': 'zh-CN', 'name': 'Chinese (Simplified)'},
+    {'code': 'zh-TW', 'name': 'Chinese (Traditional)'},
+    {'code': 'tr', 'name': 'Turkish (Türkçe)'},
+    {'code': 'vi', 'name': 'Vietnamese (Tiếng Việt)'},
+    {'code': 'th', 'name': 'Thai (ไทย)'},
+    {'code': 'id', 'name': 'Indonesian (Bahasa Indonesia)'},
+    {'code': 'nl', 'name': 'Dutch (Nederlands)'},
+    {'code': 'pl', 'name': 'Polish (Polski)'},
+
+    # --- FULL ALPHABETICAL LIST ---
     {'code': 'af', 'name': 'Afrikaans'}, {'code': 'sq', 'name': 'Albanian'}, {'code': 'am', 'name': 'Amharic'},
-    {'code': 'hy', 'name': 'Armenian'}, {'code': 'az', 'name': 'Azerbaijani'}, {'code': 'eu', 'name': 'Basque'},
-    {'code': 'be', 'name': 'Belarusian'}, {'code': 'bs', 'name': 'Bosnian'}, {'code': 'bg', 'name': 'Bulgarian'},
-    {'code': 'ca', 'name': 'Catalan'}, {'code': 'ceb', 'name': 'Cebuano'}, {'code': 'ny', 'name': 'Chichewa'},
-    {'code': 'co', 'name': 'Corsican'}, {'code': 'hr', 'name': 'Croatian'}, {'code': 'cs', 'name': 'Czech'},
-    {'code': 'da', 'name': 'Danish'}, {'code': 'nl', 'name': 'Dutch'}, {'code': 'eo', 'name': 'Esperanto'},
-    {'code': 'et', 'name': 'Estonian'}, {'code': 'tl', 'name': 'Filipino'}, {'code': 'fi', 'name': 'Finnish'},
+    {'code': 'hy', 'name': 'Armenian'}, {'code': 'ay', 'name': 'Aymara'}, {'code': 'az', 'name': 'Azerbaijani'},
+    {'code': 'bm', 'name': 'Bambara'}, {'code': 'eu', 'name': 'Basque'}, {'code': 'be', 'name': 'Belarusian'},
+    {'code': 'bs', 'name': 'Bosnian'}, {'code': 'bg', 'name': 'Bulgarian'}, {'code': 'ca', 'name': 'Catalan'},
+    {'code': 'ceb', 'name': 'Cebuano'}, {'code': 'ny', 'name': 'Chichewa'}, {'code': 'co', 'name': 'Corsican'},
+    {'code': 'hr', 'name': 'Croatian'}, {'code': 'cs', 'name': 'Czech'}, {'code': 'da', 'name': 'Danish'},
+    {'code': 'dv', 'name': 'Dhivehi'}, {'code': 'eo', 'name': 'Esperanto'}, {'code': 'et', 'name': 'Estonian'},
+    {'code': 'ee', 'name': 'Ewe'}, {'code': 'tl', 'name': 'Filipino'}, {'code': 'fi', 'name': 'Finnish'},
     {'code': 'fy', 'name': 'Frisian'}, {'code': 'gl', 'name': 'Galician'}, {'code': 'ka', 'name': 'Georgian'},
-    {'code': 'el', 'name': 'Greek'}, {'code': 'ht', 'name': 'Haitian Creole'}, {'code': 'ha', 'name': 'Hausa'},
-    {'code': 'haw', 'name': 'Hawaiian'}, {'code': 'iw', 'name': 'Hebrew'}, {'code': 'hmn', 'name': 'Hmong'},
-    {'code': 'hu', 'name': 'Hungarian'}, {'code': 'is', 'name': 'Icelandic'}, {'code': 'ig', 'name': 'Igbo'},
-    {'code': 'id', 'name': 'Indonesian'}, {'code': 'ga', 'name': 'Irish'}, {'code': 'jw', 'name': 'Javanese'},
-    {'code': 'kk', 'name': 'Kazakh'}, {'code': 'km', 'name': 'Khmer'}, {'code': 'ku', 'name': 'Kurdish'},
+    {'code': 'el', 'name': 'Greek'}, {'code': 'gn', 'name': 'Guarani'}, {'code': 'ht', 'name': 'Haitian Creole'},
+    {'code': 'ha', 'name': 'Hausa'}, {'code': 'haw', 'name': 'Hawaiian'}, {'code': 'iw', 'name': 'Hebrew'},
+    {'code': 'hmn', 'name': 'Hmong'}, {'code': 'hu', 'name': 'Hungarian'}, {'code': 'is', 'name': 'Icelandic'},
+    {'code': 'ig', 'name': 'Igbo'}, {'code': 'ilo', 'name': 'Ilocano'}, {'code': 'ga', 'name': 'Irish'},
+    {'code': 'jw', 'name': 'Javanese'}, {'code': 'kk', 'name': 'Kazakh'}, {'code': 'km', 'name': 'Khmer'},
+    {'code': 'rw', 'name': 'Kinyarwanda'}, {'code': 'kri', 'name': 'Krio'}, {'code': 'ku', 'name': 'Kurdish'},
     {'code': 'ky', 'name': 'Kyrgyz'}, {'code': 'lo', 'name': 'Lao'}, {'code': 'la', 'name': 'Latin'},
-    {'code': 'lv', 'name': 'Latvian'}, {'code': 'lt', 'name': 'Lithuanian'}, {'code': 'lb', 'name': 'Luxembourgish'},
-    {'code': 'mk', 'name': 'Macedonian'}, {'code': 'mg', 'name': 'Malagasy'}, {'code': 'ms', 'name': 'Malay'},
-    {'code': 'mt', 'name': 'Maltese'}, {'code': 'mi', 'name': 'Maori'}, {'code': 'mn', 'name': 'Mongolian'},
-    {'code': 'my', 'name': 'Myanmar'}, {'code': 'ne', 'name': 'Nepali'}, {'code': 'no', 'name': 'Norwegian'},
-    {'code': 'ps', 'name': 'Pashto'}, {'code': 'fa', 'name': 'Persian'}, {'code': 'pl', 'name': 'Polish'},
-    {'code': 'pt', 'name': 'Portuguese'}, {'code': 'ro', 'name': 'Romanian'}, {'code': 'sm', 'name': 'Samoan'},
-    {'code': 'gd', 'name': 'Scots Gaelic'}, {'code': 'sr', 'name': 'Serbian'}, {'code': 'st', 'name': 'Sesotho'},
-    {'code': 'sn', 'name': 'Shona'}, {'code': 'sd', 'name': 'Sindhi'}, {'code': 'si', 'name': 'Sinhala'},
-    {'code': 'sk', 'name': 'Slovak'}, {'code': 'sl', 'name': 'Slovenian'}, {'code': 'so', 'name': 'Somali'},
-    {'code': 'su', 'name': 'Sundanese'}, {'code': 'sw', 'name': 'Swahili'}, {'code': 'sv', 'name': 'Swedish'},
-    {'code': 'tg', 'name': 'Tajik'}, {'code': 'th', 'name': 'Thai'}, {'code': 'tr', 'name': 'Turkish'},
-    {'code': 'uk', 'name': 'Ukrainian'}, {'code': 'uz', 'name': 'Uzbek'}, {'code': 'vi', 'name': 'Vietnamese'},
-    {'code': 'cy', 'name': 'Welsh'}, {'code': 'xh', 'name': 'Xhosa'}, {'code': 'yi', 'name': 'Yiddish'},
-    {'code': 'yo', 'name': 'Yoruba'}, {'code': 'zu', 'name': 'Zulu'}
+    {'code': 'lv', 'name': 'Latvian'}, {'code': 'lt', 'name': 'Lithuanian'}, {'code': 'ln', 'name': 'Lingala'},
+    {'code': 'lg', 'name': 'Luganda'}, {'code': 'lb', 'name': 'Luxembourgish'}, {'code': 'mk', 'name': 'Macedonian'},
+    {'code': 'mg', 'name': 'Malagasy'}, {'code': 'ms', 'name': 'Malay'}, {'code': 'mt', 'name': 'Maltese'},
+    {'code': 'mi', 'name': 'Maori'}, {'code': 'mn', 'name': 'Mongolian'}, {'code': 'my', 'name': 'Myanmar'},
+    {'code': 'ne', 'name': 'Nepali'}, {'code': 'no', 'name': 'Norwegian'}, {'code': 'om', 'name': 'Oromo'},
+    {'code': 'ps', 'name': 'Pashto'}, {'code': 'fa', 'name': 'Persian'}, {'code': 'qu', 'name': 'Quechua'},
+    {'code': 'ro', 'name': 'Romanian'}, {'code': 'sm', 'name': 'Samoan'}, {'code': 'gd', 'name': 'Scots Gaelic'},
+    {'code': 'nso', 'name': 'Sepedi'}, {'code': 'sr', 'name': 'Serbian'}, {'code': 'st', 'name': 'Sesotho'},
+    {'code': 'sn', 'name': 'Shona'}, {'code': 'si', 'name': 'Sinhala'}, {'code': 'sk', 'name': 'Slovak'},
+    {'code': 'sl', 'name': 'Slovenian'}, {'code': 'so', 'name': 'Somali'}, {'code': 'su', 'name': 'Sundanese'},
+    {'code': 'sw', 'name': 'Swahili'}, {'code': 'sv', 'name': 'Swedish'}, {'code': 'tg', 'name': 'Tajik'},
+    {'code': 'ti', 'name': 'Tigrinya'}, {'code': 'ts', 'name': 'Tsonga'}, {'code': 'tr', 'name': 'Turkish'},
+    {'code': 'tk', 'name': 'Turkmen'}, {'code': 'ak', 'name': 'Twi'}, {'code': 'uk', 'name': 'Ukrainian'},
+    {'code': 'uz', 'name': 'Uzbek'}, {'code': 'cy', 'name': 'Welsh'}, {'code': 'xh', 'name': 'Xhosa'},
+    {'code': 'yi', 'name': 'Yiddish'}, {'code': 'yo', 'name': 'Yoruba'}, {'code': 'zu', 'name': 'Zulu'}
 ]
 
 @app.route('/')
 def index():
-    return send_file('index.html')
+    try:
+        return send_file('index.html')
+    except:
+        return "index.html not found", 404
 
 @app.route('/api/languages')
 def get_languages():
@@ -176,4 +216,14 @@ def tts_audio():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=5000)
+    # Ensure uploads directory exists
+    if not os.path.exists('uploads'):
+        os.makedirs('uploads')
+    
+    # Run the server
+    print("\n" + "="*50)
+    print("AI Neural Translator Pro - Server Starting...")
+    print("Access at: http://127.0.0.1:5000")
+    print("="*50 + "\n")
+    
+    app.run(host='0.0.0.0', debug=True, port=5000, use_reloader=False)
